@@ -27,6 +27,10 @@ public class Board {
             }
         }
     }
+    
+    public char[][] getGrid() {
+        return this.grid;
+    }
 
     public void markBoard(char player, int row, int col) {
         if (this.grid[row][col] == ' ' && (player == 'X' || player == 'O')) {
