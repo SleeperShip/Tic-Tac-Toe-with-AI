@@ -1,21 +1,27 @@
+import java.util.Random;
+
 public class AIPlayerMedium extends Player {
    
-    protected Random rand = new Random();
-   
+    private Random rand = new Random();
+    
     @Override
     public void makeMove(Board board) {
-        int[] moveLoc = checkForWinningCell(board.getGrid());
-        //System.out.print(moveLoc[0] + ", " + movLoc[1]);
+        
+        int[] moveLoc = new int[2];
+        moveLoc[0] = 100;
+        moveLoc[1] = 100;
+        //moveLoc = checkForWinningCell(board);
+        System.out.println("In MEDIUM AI OBJECT " + moveLoc[0] + ", " + moveLoc[1]);
        
         if (moveLoc[0] == -1 || moveLoc[1] == -1) {
             makeRandomMove(board);
         } else {
-            markBoard(board.getCurrentPlayer(), moveLoc[0], moveLoc[1]);
+            board.markBoard(board.getCurrentPlayer(), moveLoc[0], moveLoc[1]);
         }
    
      }
 
-private void makeRandomMove(Board board) {
+public void makeRandomMove(Board board) {
     rand = new Random(System.currentTimeMillis());
     int row;
     int col;
@@ -38,7 +44,7 @@ private void makeRandomMove(Board board) {
     board.updateGame();
 }
 
-private int[] checkForWinningCell(Board board) {
+public int[] checkForWinningCell(Board board) {
    char[][] grid = board.getGrid();
    char currentPlayer = board.getCurrentPlayer();
    int[] winningLocation = new int[2];
@@ -69,7 +75,7 @@ private int[] checkForWinningCell(Board board) {
    return winningLocation;
 }
 
-private int[] getBlankSpaceDiag1(char[][] grid) {
+public int[] getBlankSpaceDiag1(char[][] grid) {
    int[] coordinates = new int[2];
    
    for (int i = 0; i < grid[0].length; i++)  {
@@ -81,7 +87,7 @@ private int[] getBlankSpaceDiag1(char[][] grid) {
    return coordinates;
 }
 
-private int[] getBlankSpaceDiag2(char[][] grid) {
+public int[] getBlankSpaceDiag2(char[][] grid) {
    int[] coordinates = new int[2];
    
    for (int i = 0; i < grid[0].length; i++)  {
@@ -93,7 +99,7 @@ private int[] getBlankSpaceDiag2(char[][] grid) {
    return coordinates;
 }
 
-private int[] getBlankSpaceCol(char[][] grid, int col) {
+public int[] getBlankSpaceCol(char[][] grid, int col) {
     int row = -1;
     int[] coordinates = new int[2];
    
@@ -107,7 +113,7 @@ private int[] getBlankSpaceCol(char[][] grid, int col) {
     return coordinates;
 }
 
-private int[] getBlankSpaceRow(char[] set, int row) {  //row number is given, returned will be col for coordinates
+public int[] getBlankSpaceRow(char[] set, int row) {  //row number is given, returned will be col for coordinates
    int col = -1;
    int[] coordinates = new int[2];
    
@@ -121,7 +127,7 @@ private int[] getBlankSpaceRow(char[] set, int row) {  //row number is given, re
    return coordinates;
 }
 
-private boolean checkArrayDiag1(char[][] grid, char currentPlayer) {
+public boolean checkArrayDiag1(char[][] grid, char currentPlayer) {
    int playerCount = 0;
    int whiteSpaceCount = 0;
    
@@ -142,7 +148,7 @@ private boolean checkArrayDiag1(char[][] grid, char currentPlayer) {
    return false;
 }
 
-private boolean checkArrayDiag2(char[][] grid, char currentPlayer) {
+public boolean checkArrayDiag2(char[][] grid, char currentPlayer) {
    int playerCount = 0;
    int whiteSpaceCount = 0;
    
@@ -164,7 +170,7 @@ private boolean checkArrayDiag2(char[][] grid, char currentPlayer) {
    return false;
 }
 
-private boolean checkArrayCol(char[][] grid, int colNumber, char currentPlayer) {
+public boolean checkArrayCol(char[][] grid, int colNumber, char currentPlayer) {
    int playerCount = 0;
    int whiteSpaceCount = 0;
    boolean winningColumn = false;
@@ -187,7 +193,7 @@ private boolean checkArrayCol(char[][] grid, int colNumber, char currentPlayer) 
    return winningColumn;
 }
 
-private boolean checkArrayRow(char[] set, char currentPlayer) {
+public boolean checkArrayRow(char[] set, char currentPlayer) {
    int playerCount = 0;
    int whiteSpaceCount = 0;
    
