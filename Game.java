@@ -1,4 +1,3 @@
-package tictactoe;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -24,6 +23,7 @@ public class Game {
     }
     
     public void match(Player p1, Player p2) {
+        //System.out.println("IN METHOD MATCH CLASS GAME");
         printBoard();
         p1.makeMove(board);
         while (board.getGameStatus() == Board.StateOfGame.NOT_FINISHED) {
@@ -76,7 +76,7 @@ public class Game {
     }
 
     private boolean checkPlayerOption(String command) {
-        boolean valid = command.equals("user") || command.equals("easy") || command.equals.("medium");
+        boolean valid = command.equals("user") || command.equals("easy") || command.equals("medium");
         if (!valid) {
             System.out.println("Bad parameters!");
         }
@@ -122,31 +122,11 @@ public class Game {
                 continue;
             }
 
-            inputScanner.nextLine();  // Advances the scanner to prevent input errors
+            //inputScanner.nextLine();  // Advances the scanner to prevent input errors
             invalid = false;  // Sets the condition to false to break the loop
 
         } while(invalid);
         return commands;
-    }
-
-    public void makeComputerMove() {
-        Random rand = new Random(System.currentTimeMillis());
-        int row;
-        int col;
-
-        while (true) {
-            row = rand.nextInt(3) + 1 - 1;
-            col = rand.nextInt(3) + 1 - 1;
-
-            if (board.cellOpen(row, col)) {
-                break;
-            }
-        }
-        board.markBoard(board.getCurrentPlayer(), row, col);
-        board.updateGame();
-        printBoard();
-        System.out.println("Making move level " + '"' + "easy" + '"');
-        board.updateGame();
     }
 
     private void printBoard() {
