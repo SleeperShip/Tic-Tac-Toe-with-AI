@@ -1,5 +1,3 @@
-package tictactoe;
-
 public class Board {
 
     private char[][] grid;
@@ -113,7 +111,13 @@ public class Board {
         }
         return this.currentPlayer;
     }
-
+    
+    public char getOpposingPlayer() {
+        if (getCurrentPlayer() == 'X') {
+            return 'O';
+        }
+        return 'X';
+    }
     private void nextPlayer() {
         if (this.currentPlayer == 'X') {
             this.currentPlayer = 'O';
