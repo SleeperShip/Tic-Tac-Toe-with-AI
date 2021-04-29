@@ -9,12 +9,14 @@ public class AIPlayerMedium extends Player {
         
         int[] moveLoc = new int[2];
         moveLoc = checkForWinningCell(board);
-        //System.out.println("In MEDIUM AI OBJECT " + moveLoc[0] + ", " + moveLoc[1]);
+        System.out.println("In MEDIUM AI OBJECT " + moveLoc[0] + ", " + moveLoc[1]);
        
         if (moveLoc[0] == -1 || moveLoc[1] == -1) {
             makeRandomMove(board);
         } else {
             board.markBoard(board.getCurrentPlayer(), moveLoc[0], moveLoc[1]);
+            board.updateGame();
+            board.printBoard();
         }
    
      }
@@ -39,7 +41,7 @@ public void makeRandomMove(Board board) {
     board.updateGame();
     board.printBoard();
     System.out.println("Making move level " + '"' + "medium(random)" + '"');
-    board.updateGame();
+    //board.updateGame();
 }
 
 public int[] checkForWinningCell(Board board) {
