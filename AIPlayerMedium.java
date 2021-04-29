@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class AIPlayerMedium extends Player {
    
     private Random rand = new Random();
@@ -6,10 +8,8 @@ public class AIPlayerMedium extends Player {
     public void makeMove(Board board) {
         
         int[] moveLoc = new int[2];
-        moveLoc[0] = 100;
-        moveLoc[1] = 100;
-        //moveLoc = checkForWinningCell(board);
-        System.out.println("In MEDIUM AI OBJECT " + moveLoc[0] + ", " + moveLoc[1]);
+        moveLoc = checkForWinningCell(board);
+        //System.out.println("In MEDIUM AI OBJECT " + moveLoc[0] + ", " + moveLoc[1]);
        
         if (moveLoc[0] == -1 || moveLoc[1] == -1) {
             makeRandomMove(board);
@@ -162,7 +162,7 @@ public boolean checkArrayDiag2(char[][] grid, char currentPlayer, char opposingP
    
    for (int i = 0; i < grid[0].length; i++) {
            if(grid[grid[0].length - i - 1][i] == currentPlayer) {
-               playerCount++;
+               currentPlayerCount++;
            }
            
            if (grid[grid[0].length - i - 1][i] == opposingPlayer) {
