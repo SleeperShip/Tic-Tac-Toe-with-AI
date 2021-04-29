@@ -50,6 +50,7 @@ public class Game {
                 break;
             case "medium" :
                 player1 = new AIPlayerMedium();
+                break;
             default :
                 return;
         }
@@ -63,6 +64,7 @@ public class Game {
                 break;
             case "medium" :
                 player2 = new AIPlayerMedium();
+                break;
             default :
                 return;
         }
