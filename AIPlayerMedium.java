@@ -1,3 +1,4 @@
+package tictactoe;
 import java.util.Random;
 
 public class AIPlayerMedium extends Player {
