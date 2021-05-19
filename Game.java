@@ -52,6 +52,9 @@ public class Game {
             case "medium" :
                 player1 = new AIPlayerMedium();
                 break;
+            case "hard" :
+                player1 = new AIPlayerHard();
+                break;
             default :
                 return;
         }
@@ -66,6 +69,9 @@ public class Game {
             case "medium" :
                 player2 = new AIPlayerMedium();
                 break;
+            case "hard" :
+                player2 = new AIPlayerHard();
+                break;
             default :
                 return;
         }
@@ -79,7 +85,7 @@ public class Game {
     }
 
     private boolean checkPlayerOption(String command) {
-        boolean valid = command.equals("user") || command.equals("easy") || command.equals("medium");
+        boolean valid = command.equals("user") || command.equals("easy") || command.equals("medium") || command.equals("hard");
         if (!valid) {
             System.out.println("Bad parameters!");
         }
