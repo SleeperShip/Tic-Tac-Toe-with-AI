@@ -27,7 +27,7 @@ public class Board {
             }
         }
     }
-    
+
     public char[][] getGrid() {
         return this.grid;
     }
@@ -36,7 +36,13 @@ public class Board {
         if (this.grid[row][col] == ' ' && (player == 'X' || player == 'O')) {
             this.grid[row][col] = player;
         }
-        nextPlayer();  //next player's turn after move has been made
+    }
+
+    public char getOpposingPlayer(char currentPlayer) {
+        if (currentPlayer == 'X') {
+            return 'O';
+        }
+        return 'X';
     }
 
     public boolean hasEmptyCells() {
@@ -54,7 +60,7 @@ public class Board {
         return this.grid[row][column] == ' ';
     }
 
-    private boolean checkForWin(char player) {
+    public boolean checkForWin(char player) {
         if (this.grid[0][0] == player && this.grid[0][1] == player && this.grid[0][2] == player) {return true;}  //check rows
         if (this.grid[1][0] == player && this.grid[1][1] == player && this.grid[1][2] == player) {return true;}
         if (this.grid[2][0] == player && this.grid[2][1] == player && this.grid[2][2] == player) {return true;}
@@ -86,46 +92,6 @@ public class Board {
 
     public StateOfGame getGameStatus() {
         return state;
-    }
-
-    public char getCurrentPlayer() {
-        int xCount = 0;
-        int oCount = 0;
-
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
-                if (grid[i][j] == 'X') {
-                    xCount++;
-                }
-
-                if (grid[i][j] == 'O') {
-                    oCount++;
-                }
-            }
-        }
-
-        if (xCount == oCount) {
-            this.currentPlayer = 'X';
-        }
-
-        if (xCount > oCount) {
-            this.currentPlayer = 'O';
-        }
-        return this.currentPlayer;
-    }
-    
-    public char getOpposingPlayer() {
-        if (getCurrentPlayer() == 'X') {
-            return 'O';
-        }
-        return 'X';
-    }
-    private void nextPlayer() {
-        if (this.currentPlayer == 'X') {
-            this.currentPlayer = 'O';
-            return;
-        }
-        this.currentPlayer = 'X';
     }
 
     public void printBoard() {
