@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class HumanPlayer extends Player {
 
     public void makeMove(Board board) {
-        char player = board.getCurrentPlayer();
+        char player = this.playerMark;
         int[] coordinates = new int[2];
         coordinates = getCoordinates(board);
         board.markBoard(player, coordinates[0], coordinates[1]);
