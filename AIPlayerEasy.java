@@ -1,9 +1,9 @@
 package tictactoe;
 import java.util.Random;
 
-public class AIPlayerEasy extends Player{
+public class AIPlayerEasy extends Player {
 
-    protected Random rand = new Random();
+    private Random rand = new Random();
 
     @Override
     public void makeMove(Board board) {
@@ -21,7 +21,7 @@ public class AIPlayerEasy extends Player{
                 continue;
             }
         }
-        board.markBoard(board.getCurrentPlayer(), row, col);
+        board.markBoard(this.playerMark, row, col);
         board.updateGame();
         board.printBoard();
         System.out.println("Making move level " + '"' + "easy" + '"');
