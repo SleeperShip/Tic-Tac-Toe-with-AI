@@ -1,6 +1,5 @@
 package tictactoe;
 import java.util.Scanner;
-import java.util.Random;
 
 public class Game {
 
@@ -22,9 +21,8 @@ public class Game {
         board = new Board(state);
         printBoard();
     }
-    
+
     public void match(Player p1, Player p2) {
-        //System.out.println("IN METHOD MATCH CLASS GAME");
         printBoard();
         p1.makeMove(board);
         while (board.getGameStatus() == Board.StateOfGame.NOT_FINISHED) {
@@ -39,21 +37,25 @@ public class Game {
     }
 
     private void getGameMode(String[] commands) {
-        Player player1 = null;
-        Player player2 = null;
+        Player player1;
+        Player player2;
 
         switch(commands[1]) {
             case "user" :
                 player1 = new HumanPlayer();
+                player1.playerMark = 'X';
                 break;
             case "easy" :
                 player1 = new AIPlayerEasy();
+                player1.playerMark = 'X';
                 break;
             case "medium" :
                 player1 = new AIPlayerMedium();
+                player1.playerMark = 'X';
                 break;
             case "hard" :
                 player1 = new AIPlayerHard();
+                player1.playerMark = 'X';
                 break;
             default :
                 return;
@@ -62,20 +64,24 @@ public class Game {
         switch(commands[2]) {
             case "user" :
                 player2 = new HumanPlayer();
+                player2.playerMark = 'O';
                 break;
             case "easy" :
                 player2 = new AIPlayerEasy();
+                player2.playerMark = 'O';
                 break;
             case "medium" :
                 player2 = new AIPlayerMedium();
+                player2.playerMark = 'O';
                 break;
             case "hard" :
                 player2 = new AIPlayerHard();
+                player2.playerMark = 'O';
                 break;
             default :
                 return;
         }
-        
+
         match(player1, player2);
     }
 
